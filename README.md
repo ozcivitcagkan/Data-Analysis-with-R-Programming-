@@ -18,6 +18,7 @@ The data set is publicly available on this [Kaggle](https://www.kaggle.com/datas
 
 
 # Installing various packages in R
+```{r}
 install.packages("skimr")
 
 library(tidyverse)
@@ -26,7 +27,11 @@ library(skimr)
 
 library(janitor)
 
+```
+
 # Importing .csv dataset files
+
+```{r}
 activity <- read_csv("dailyActivity_merged.csv")
 
 calories <- read_csv("dailyCalories_merged.csv")
@@ -43,7 +48,11 @@ steps_hourly <- read_csv("hourlySteps_merged.csv")
 
 weight <- read_csv("weightLogInfo_merged.csv")
 
+```
+
 # Checking datasets
+
+```{r}
 head(activity)
 
 activty <- activity %>% mutate_all(str_trim)
@@ -69,7 +78,6 @@ head(weight)
 weight <- weight %>% mutate_all(str_trim)
 
 # Cleaning and checking duplicated data
-
 activity <- distinct(activity)
 
 calories <- distinct(calories)
@@ -86,9 +94,11 @@ steps_hourly <- distinct(steps_hourly)
 
 weight <- distinct(weight)
 
+```
 
 # Checking sample size
 
+```{r}
 unique_count_activity <- length(unique(activity$id))
 print(unique_count_activity)
 
@@ -110,9 +120,11 @@ print(unique_count_steps)
 unique_count_steps_hourly <- length(unique(steps_hourly$id))
 print(unique_count_steps_hourly)
 
+```
 
 # Checking data again and continue to clean 
 
+```{r}
 head(activity)
 
 head(intensities)
@@ -143,8 +155,11 @@ clean_names(steps_hourly)
 
 steps_hourly <- steps_hourly %>% rename_all(tolower)
 
+```
+
 # Adjusting dates in dataset
 
+```{r}
 activity <- activity %>%
   rename(date = activitydate) %>% 
   mutate(id = as.character(id)) %>%
@@ -167,8 +182,6 @@ head(steps)
 
 head(steps_hourly)
 
-
-
 sleep <- sleep %>% 
   rename(date = sleepday) %>% 
   mutate(id = as.character(id))
@@ -190,13 +203,15 @@ steps_hourly <- steps_hourly %>%
   separate(date_time, into = c("date", "time"), sep = " ") %>% 
   mutate(date = ymd(date))
 
-
 head(activity)
 
 head(sleep)
 
+```
+
 # Merging data
 
+```{r}
 activity_sleep <- merge(activity, sleep, by = c("id", "date"))
 
 head(activity_sleep)
@@ -209,11 +224,15 @@ calories_steps <- merge(calories, steps, by = c("id", "date"))
 
 head(calories_steps)
 
+```
 
 # Visualization
 
+```{r}
 ggplot(data = calories_intensities, mapping = aes(x = totalminutes, y = calories)) +
   geom_jitter() + geom_smooth(method = lm) + labs(title = "Active minutes vs Calories")
+
+![4903cec3-ec39-4119-b9ef-d49f5ebf3a7f](https://github.com/ozcivitcagkan/Data-Analysis-with-R-Programming-/assets/70453008/2e958f26-8b4b-4849-9692-1a5d033edc39)
 
 
 ggplot(data = calories_steps, mapping = aes(x = steptotal, y = calories)) +
@@ -259,16 +278,14 @@ monthly_avg_steps <- daily_steps %>%
   
 print(monthly_avg_steps)
 
- month   avg_steps
-  <chr>       <dbl>
-1 2016-04     8373.
-2 2016-05     6686.
+```
+Steps of average of april and may  is 8373 and 6686 respectively.
 
 So the average steps per month is 7529. 
   
 # Suggestions
   
-  In proposing enhancements for the Bellabeat app, it would be beneficial to diversify the available exercise programs to cater to a broader spectrum of user preferences and fitness levels.
+In proposing enhancements for the Bellabeat app, it would be beneficial to diversify the available exercise programs to cater to a broader spectrum of user preferences and fitness levels.
 
 Considering the direct correlation between step count and calorie expenditure, incorporating a feature that sends users notifications encouraging increased walking or running could serve as an effective motivator for a more active lifestyle.
 
@@ -279,8 +296,3 @@ For users aiming to enhance their sleep quality, a valuable recommendation would
 A notification can be delivered to the user for walking 10,000 steps per day, as recommended by scientists.
 
 Thanks!
-
-
-  
-  
-
