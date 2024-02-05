@@ -232,6 +232,9 @@ head(calories_steps)
 ggplot(data = calories_intensities, mapping = aes(x = totalminutes, y = calories)) +
   geom_jitter() + geom_smooth(method = lm) + labs(title = "Active minutes vs Calories")
 
+![4903cec3-ec39-4119-b9ef-d49f5ebf3a7f](https://github.com/ozcivitcagkan/Data-Analysis-with-R-Programming-/assets/70453008/2e958f26-8b4b-4849-9692-1a5d033edc39)
+
+
 ggplot(data = calories_steps, mapping = aes(x = steptotal, y = calories)) +
   geom_jitter() + geom_smooth(method = lm) + labs(title = "Total steps vs Calories")
 
@@ -276,16 +279,13 @@ monthly_avg_steps <- daily_steps %>%
 print(monthly_avg_steps)
 
 ```
- month   avg_steps
-  <chr>       <dbl>
-1 2016-04     8373.
-2 2016-05     6686.
+Steps of average of april and may  is 8373 and 6686 respectively.
 
 So the average steps per month is 7529. 
   
 # Suggestions
   
-  In proposing enhancements for the Bellabeat app, it would be beneficial to diversify the available exercise programs to cater to a broader spectrum of user preferences and fitness levels.
+In proposing enhancements for the Bellabeat app, it would be beneficial to diversify the available exercise programs to cater to a broader spectrum of user preferences and fitness levels.
 
 Considering the direct correlation between step count and calorie expenditure, incorporating a feature that sends users notifications encouraging increased walking or running could serve as an effective motivator for a more active lifestyle.
 
