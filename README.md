@@ -1,4 +1,4 @@
-# Data-Analysis-with-R-Programming-
+# FitBit-Smart-Device-Data-Analysis-with-R-Programming
 
 ## Summary 
 
