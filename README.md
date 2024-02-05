@@ -8,8 +8,6 @@ The results of my analysis revealed the efficacy of their products in enhancing 
 
 Through a blend of personalized insights and recommendations, Bellabeat's application empowers users, providing them with the means to proactively manage and elevate their health and well-being. In essence, Bellabeat stands as a compelling illustration of how cutting-edge technology can positively transform and enhance the health and wellness of women.
 
-Let's look it at!
-
 # Data sources
 Data Set:
 [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit)
